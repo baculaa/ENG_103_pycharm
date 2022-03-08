@@ -19,8 +19,14 @@ def print_goals(my_goals):
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     # Change your variable values here, be sure to leave the quotation marks
+
+    # PUT YOUR NAME HERE
     name = 'Alexandra'
+
+    # PUT YOUR FAVORITE ANIMAL HERE
     animal = 'cats'
+
+    # PUT YOUR GOALS FOR THE CLASS HERE
     my_goals = 'to help you all learn python and have fun creating cool visualizations and art along the way.'
 
     # Call the functions to print your answers
