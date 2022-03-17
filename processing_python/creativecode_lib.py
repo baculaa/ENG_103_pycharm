@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 
-class eng103_lib:
+class creativecode_lib:
     def __init__(self):
         pass
     def plot_circle(self,center_x,center_y,radius):
@@ -11,5 +11,5 @@ class eng103_lib:
         plt.show()
 
 if __name__ == '__main__':
-    eng103_lib = eng103_lib()
-    eng103_lib.plot_circle(0,0,5)
+    creativecode = creativecode_lib()
+    creativecode.plot_circle(0,0,5)
