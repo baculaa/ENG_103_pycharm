@@ -1,3 +1,6 @@
+## AUTHOR: Alexandra Bacula
+### based on: https://plotly.com/python/shapes/
+
 import plotly.graph_objects as go
 
 class creative_code_lib:
@@ -12,8 +15,14 @@ class creative_code_lib:
           width=line_width,
           dash=dash_type))
 
-    def plot_rectangle(self,corner1_x,corner1_y,corner2_x,corner2_y):
-        pass
+    def plot_rectangle(self,corner1_x,corner1_y,corner2_x,corner2_y,outline_color,outline_witdh,fill_color):
+        self.fig.add_shape(type="rect",
+        x0=corner1_x, y0=corner1_y, x1=corner2_x, y1=corner2_y,
+        line=dict(
+          color=outline_color,
+          width=outline_witdh,
+        ),
+        fillcolor=fill_color)
 
 if __name__ == '__main__':
     creative_code_lib = creative_code_lib()
