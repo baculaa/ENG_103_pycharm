@@ -12,9 +12,9 @@ class creative_code_lib:
           width=line_width,
           dash=dash_type))
 
+    def plot_rectangle(self,corner1_x,corner1_y,corner2_x,corner2_y):
+        pass
+
 if __name__ == '__main__':
-    creative_code = creative_code_lib()
-    # TESTING FUNCTIONS #
-    creative_code.plot_line_endpoints(0,0,1,1,'blue',4,'dash')
-    creative_code.fig.update_shapes(dict(xref='x', yref='y'))
-    creative_code.fig.show()
+    creative_code_lib = creative_code_lib()
+    print('hi')
