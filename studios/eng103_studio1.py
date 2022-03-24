@@ -15,7 +15,8 @@ def print_goals(my_goals):
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    # Change your variable values here, be sure to leave the quotation marks
+    # YOU WILL EDIT THIS PART FOR STUIDO 1
+    ## Change your variable values here, be sure to leave the quotation marks
 
     # PUT YOUR NAME HERE
     name = 'Alexandra'
@@ -27,6 +28,7 @@ if __name__ == '__main__':
     my_goals = 'to help you all learn python and have fun creating cool visualizations and art along the way.'
 
     # Call the functions to print your answers
+    ## When calling a function, the syntax is function_name(inputs)
     print_hi(name)
     print_animal(animal)
     print_goals(my_goals)
