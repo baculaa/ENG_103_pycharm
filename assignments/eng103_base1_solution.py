@@ -42,7 +42,7 @@ class eng103_base1:
             set_color='blueviolet'
 
         return set_color
-
+# This is a custom function created to read in the CSV file data.
 if __name__ == '__main__':
     base1 = eng103_base1()
 
