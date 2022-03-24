@@ -1,8 +1,5 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
+## AUTHOR: Alexandra Bacula
+## FOR ENG 103 Studio 1
 
 def print_hi(name):
     # This function will print the following text and replace {name} with the value of the name variable
