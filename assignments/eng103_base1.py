@@ -124,8 +124,8 @@ if __name__ == '__main__':
 
         ##### EDIT HERE ######
         # The function plt.title() sets the title of the plot
-        ## Change the title to your name and the studio number
-        plt.title("[YOUR NAME, STUDIO X]")
+        ## Change the title to your name and the assignment number
+        plt.title("[YOUR NAME, ASSIGNMENT X]")
 
         # The plt.pause() function pauses the plot from closing for the number of seconds in the parentheses
         plt.pause(0.05)
