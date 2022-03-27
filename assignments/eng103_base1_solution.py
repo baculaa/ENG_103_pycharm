@@ -38,15 +38,44 @@ class eng103_base1:
     # This is a custom function that changes the color of a plotted point
     ## INPUT: the index of the current point being plotted in the main function
     ## OUTPUT: the color of the point
-    def set_colors(self,n):
+    def set_colors_assignment_1(self,n):
+
         ##### EDIT HERE ######
 
         # ASSIGNMENT 1:
         ## Change the color of the point to something else
         ## See here for color options: https://matplotlib.org/stable/gallery/color/named_colors.html
 
-        set_color = 'black'
+        # This variable sets the fill color of the marker
+        marker_fill_color = 'black'
 
+        # This variable sets the edge color of the marker
+        marker_edge_color = 'black'
+
+        # This variable sets the marker size
+        marker_size = 10
+
+        # This variable sets the marker style
+        ## see here for the possible marker types: https://matplotlib.org/3.5.1/gallery/lines_bars_and_markers/marker_reference.html
+        marker = 'o'
+
+        # If you want your marker to be half one color and half another, choose a second color
+        marker_fill_color2 = 'lightsteelblue'
+
+        # And choose how you want to split your marker colors
+        ## options: 'full' , 'left' , 'right' , 'bottom' , 'top' , 'none'
+        fill_style = 'top'
+
+        ### DO NOT EDIT BELOW THIS LINE!! ###
+        marker_style = dict(marker=marker, markerfacecolor=marker_fill_color, markerfacecoloralt=marker_fill_color2,
+                            markersize=marker_size, markeredgecolor=marker_edge_color, fillstyle=fill_style)
+
+        return marker_style
+
+
+    ## INPUT: the index of the current point being plotted in the main function
+    ## OUTPUT: the color of the point
+    def set_colors_assignment_2(self, n):
         # ASSIGNMENT 2:
         ## Write your if else statements to change the color of the points based on something
         ## For ex. distance from center, angle around a circle, index number, etc
@@ -89,19 +118,22 @@ class eng103_base1:
         dist = np.linalg.norm(base_point-current_point)
 
         if dist < 0.65:
-            set_color = 'steelblue'
+            marker_fill_color = 'steelblue'
         elif dist < 1:
-            set_color = 'mediumturquoise'
+            marker_fill_color = 'mediumturquoise'
         elif dist < 1.5:
-            set_color = 'forestgreen'
+            marker_fill_color = 'forestgreen'
         elif dist < 2:
-            set_color = 'green'
+            marker_fill_color = 'green'
         elif dist < 2.5:
-            set_color = 'royalblue'
+            marker_fill_color = 'royalblue'
         else:
-            set_color='blueviolet'
+            marker_fill_color='blueviolet'
 
-        return set_color
+        ### DO NOT EDIT BELOW THIS LINE!! ###
+        marker_style = dict(marker = marker, markerfacecolor = marker_fill_color, markerfacecoloralt=marker_fill_color2, markersize = marker_size, markeredgecolor=marker_edge_color, fillstyle=fill_style)
+
+        return marker_style
 # This is a custom function created to read in the CSV file data.
 if __name__ == '__main__':
     # Call the class
@@ -120,12 +152,12 @@ if __name__ == '__main__':
     for n in range(data_length):
         # The set_colors() function is a custom function that sets the color for a point in the data with a given index n
         ## This function is defined in the code above and the color will be edited there
-        set_color = base1.set_colors(n)
+        marker_style = base1.set_colors_assignment_1(n)
 
         # This is where we plot the current point on the scatter plot
         ## n denotes the index of the (x,y) point we are currently plotting
         ## The input color=[name of color or variable containing color] changes the color of the point
-        base1.scatter_plot = base1.ax.scatter(base1.data_x[n], base1.data_y[n], color=set_color)
+        base1.scatter_plot = base1.ax.plot(base1.data_x[n], base1.data_y[n], **marker_style)
 
         # The fig.show() function shows the figure in a separate window on your screen
         base1.fig.show()
