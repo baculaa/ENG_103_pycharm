@@ -57,18 +57,18 @@ class eng103_base1:
 
         # This variable sets the marker style
         ## see here for the possible marker types: https://matplotlib.org/3.5.1/gallery/lines_bars_and_markers/marker_reference.html
-        marker = 'o'
+        marker_type = 'o'
 
         # If you want your marker to be half one color and half another, choose a second color
         marker_fill_color2 = 'lightsteelblue'
 
         # And choose how you want to split your marker colors
         ## options: 'full' , 'left' , 'right' , 'bottom' , 'top' , 'none'
-        fill_style = 'full'
+        marker_fill_style = 'full'
 
         ### DO NOT EDIT BELOW THIS LINE!! ###
-        marker_style = dict(marker=marker, markerfacecolor=marker_fill_color, markerfacecoloralt=marker_fill_color2,
-                            markersize=marker_size, markeredgecolor=marker_edge_color, fillstyle=fill_style)
+        marker_style = dict(marker=marker_type, markerfacecolor=marker_fill_color, markerfacecoloralt=marker_fill_color2,
+                            markersize=marker_size, markeredgecolor=marker_edge_color, fillstyle=marker_fill_style)
 
         return marker_style
 
@@ -118,8 +118,8 @@ class eng103_base1:
         ###### WRITE YOUR IF/ELSE STATEMENT HERE ######
 
         ### DO NOT EDIT BELOW THIS LINE!! ###
-        marker_style = dict(marker=marker, markerfacecolor=marker_fill_color, markerfacecoloralt=marker_fill_color2,
-                            markersize=marker_size, markeredgecolor=marker_edge_color, fillstyle=fill_style)
+        marker_style = dict(marker=marker_type, markerfacecolor=marker_fill_color, markerfacecoloralt=marker_fill_color2,
+                            markersize=marker_size, markeredgecolor=marker_edge_color, fillstyle=marker_fill_style)
 
         return marker_style
 
