@@ -144,7 +144,7 @@ if __name__ == '__main__':
 
         # The set_colors() function is a custom function that sets the color for a point in the data with a given index n
         ## This function is defined in the code above and the color will be edited there
-        marker_style = base1.set_colors(n)
+        marker_style = base1.set_colors_assignment_1(n)
 
         # This is where we plot the current point on the scatter plot
         ## n denotes the index of the (x,y) point we are currently plotting
