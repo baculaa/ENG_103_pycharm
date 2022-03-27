@@ -65,7 +65,7 @@ class eng103_base1:
         # And choose how you want to split your marker colors
         ## options: 'full' , 'left' , 'right' , 'bottom' , 'top' , 'none'
         fill_style = 'top'
-
+        ##### STOP EDITING HERE #####
         ### DO NOT EDIT BELOW THIS LINE!! ###
         marker_style = dict(marker=marker, markerfacecolor=marker_fill_color, markerfacecoloralt=marker_fill_color2,
                             markersize=marker_size, markeredgecolor=marker_edge_color, fillstyle=fill_style)
@@ -129,7 +129,7 @@ class eng103_base1:
             marker_fill_color = 'royalblue'
         else:
             marker_fill_color='blueviolet'
-
+        ##### STOP EDITING HERE #####
         ### DO NOT EDIT BELOW THIS LINE!! ###
         marker_style = dict(marker = marker, markerfacecolor = marker_fill_color, markerfacecoloralt=marker_fill_color2, markersize = marker_size, markeredgecolor=marker_edge_color, fillstyle=fill_style)
 
@@ -142,8 +142,10 @@ if __name__ == '__main__':
     base1 = eng103_base1()
 
     ##### EDIT HERE ######
-    ## Change the filename to read in the provided csv file
+    # Change the filename to read in the provided csv file
     base1.read_in_data('eng103_data1.csv')
+    ##### STOP EDITING HERE #####
+
 
     # This variable looks at the data and determines how many points there are
     data_length = len(base1.data_x)
@@ -163,9 +165,14 @@ if __name__ == '__main__':
         base1.fig.show()
 
         ##### EDIT HERE ######
+        # This function sets the background color of the plot
+        ## Change the color to a color of your choice
+        base1.ax.set_facecolor("white")
+
         # The function plt.title() sets the title of the plot
         ## Change the title to your name and the assignment number
         plt.title("Alexandra Bacula, Assignment 1&2 Solution")
+        ##### STOP EDITING HERE #####
 
         # The plt.pause() function pauses the plot from closing for the number of seconds in the parentheses
         plt.pause(0.05)
@@ -173,6 +180,7 @@ if __name__ == '__main__':
     ##### EDIT HERE ######
     # Add in the name of your png below
     plt.savefig('test.png')
+    ##### STOP EDITING HERE #####
 
     # The fig.show() function shows the figure in a separate window on your screen
     base1.fig.show()
