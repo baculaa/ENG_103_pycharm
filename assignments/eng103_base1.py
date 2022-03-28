@@ -35,7 +35,7 @@ class eng103_base1:
                 # We add the y point to a list of the y points
                 self.data_y.append(float(row[1]))
 
-    # This is a custom function that changes the color of a plotted point
+    # This is a custom function that changes the color/style/size of a plotted point
     ## INPUT: the index of the current point being plotted in the main function
     ## OUTPUT: the color of the point
     def set_colors_assignment_1(self,n):
@@ -74,6 +74,10 @@ class eng103_base1:
         return marker_style
 
         #####################################################################################
+
+    # This is a custom function that changes the color/style/size of a plotted point
+    ## INPUT: the index of the current point being plotted in the main function
+    ## OUTPUT: the color of the point
     def set_colors_assignment_2(self,n):
 
         # ASSIGNMENT 2:
@@ -143,7 +147,7 @@ if __name__ == '__main__':
     # Now we go through every point in the data
     for n in range(data_length):
 
-        # The set_colors() function is a custom function that sets the color for a point in the data with a given index n
+        # The set_colors_assignment_[X]() function is a custom function that sets the color/style/size for a point in the data with a given index n
         ## This function is defined in the code above and the color will be edited there
         marker_style = base1.set_colors_assignment_1(n)
 
