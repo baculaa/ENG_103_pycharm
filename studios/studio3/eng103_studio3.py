@@ -41,7 +41,7 @@ class eng103_studio3:
     # This function draws a static ellipse
     ## INPUTS: x, y, width, height, tilt
     ## OUTPUTS: ellipse centered at (x,y) of given dimensions
-    def draw_static_ellipse(self,x,y,width,height,tilt):
+    def draw_static_ellipse(self,x,y,height,width,tilt):
         # add an ellipse
         ellipse = mpatches.Ellipse((x,y),width,height,angle=tilt)
         self.patches.append(ellipse)
@@ -76,11 +76,6 @@ class eng103_studio3:
                     height = float(input())
                     self.draw_static_rectangle(event.xdata-(width/2), event.ydata-(height/2), height, width)
 
-                elif shape == 'circle':
-                    print("Radius?")
-                    radius = float(input())
-                    self.draw_static_circle(event.xdata, event.ydata, radius)
-
                 elif shape == 'ellipse':
                     print("Width?")
                     width = float(input())
@@ -88,7 +83,20 @@ class eng103_studio3:
                     height = float(input())
                     print("Tilt? (range 0:180)")
                     tilt = float(input())
-                    self.draw_static_ellipse(event.xdata,event.ydata,width,height,tilt)
+                    self.draw_static_ellipse(event.xdata,event.ydata,height,width,tilt)
+
+                ##### EDIT HERE ######
+
+                # Write an additional elif statement for drawing a circle when the input is 'circle'
+                # Using the examples above from rectangle and ellipse, ask the user for the radius of the circle
+                ## This will consist of one print statement, and saving the input as a float type variable called radius
+
+                # Then, call the draw_static_circle() function
+                ## Use the examples from the rectangle and ellipse function calls in lines 77 and 86
+                ## The circle function will take in the x and y position like the rectangle and ellipse, and will also take in the radius
+
+                ##### STOP EDITING HERE #####
+
                 elif shape == 'Done' or shape == 'Finished':
                     flag = 1
                     self.exit_loop = 1
@@ -114,27 +122,7 @@ class eng103_studio3:
                 print("Click where you want the next shape!")
 
     def studio3_part1(self):
-        self.patches = []
-
-
-        self.draw_static_rectangle(4, 2, 5,6)
-        p = PatchCollection(self.patches, alpha=0.5)
-        p.set_facecolor('red')
-        self.ax.add_collection(p)
-        self.patches = []
-
-        ## Plot the circle at (5,5) with radius of 1
-        self.draw_static_circle(5, 5, 1)
-        ## Set the opacity of the shape to 1
-        p = PatchCollection(self.patches, alpha=1)
-        ## Set the color of the shape to blue
-        p.set_facecolor('blue')
-        ## Add the patch to the list of patches
-        self.ax.add_collection(p)
-        ## Clear patches
-        self.patches = []
-
-
+        # EXAMPLE CIRCLE #
         ## Plot the circle at (0,0) with radius of 1
         self.draw_static_circle(0, 0, 1)
         ## Set the opacity of the shape to 0.5
@@ -143,8 +131,8 @@ class eng103_studio3:
         p.set_facecolor('lavender')
         ## Add the patch to the list of patches
         self.ax.add_collection(p)
-
-
+        ## Clear patches so we don't overwrite color choices
+        self.patches = []
 
         ##### EDIT HERE #####
         # Plot at least three more shapes on the plot.
@@ -166,26 +154,28 @@ class eng103_studio3:
         ## Replace 'lavender' in the example with your color in the following function:
         ### COPY AND FILL IN COLOR: p.set_facecolor('lavender')
 
-        ## Finally, copy the following function, but don't change anything about it
-        ## This function is adding the shape you just specified to the list of shapes to plot
+        ## Finally, copy the following two functions, but don't change anything about the
+        ## The first function is adding the shape you just specified to the list of shapes to plot
+        ## The second is clearing your patches so that you don't overwrite your color and opacity choices
         ### COPY AND DO NOT CHANGE: self.ax.add_collection(p)
+        ### COPY AND DO NOT CHANGE: self.patches = []
 
         ## PUT YOUR SHAPES HERE
-        ## Each shape requires all four lines of code in the order specified above
+        ## Each shape requires all five lines of code in the order specified above
 
-        ##### STOP EDITING HERE #####
 
-        ##### EDIT HERE #####
         # Change this to your name
         plt.title("Alexandra Bacula, Studio 3 Part 1")
         ##### STOP EDITING HERE #####
 
         plt.show()
 
+
     def studio3_part2(self):
         self.draw_static_circle(0, 0, 0.01)
         p = PatchCollection(self.patches, alpha=0.1)
         self.ax.add_collection(p)
+
 
         # The fig.show() function shows the figure in a separate window on your screen
         plt.ion()
@@ -201,9 +191,8 @@ class eng103_studio3:
         print("Click where you want the shape!")
         plt.connect('button_press_event', self.get_mouse_coords)
 
-        plt.show(block=True)
+        plt.show(block = True)
         plt.pause(1)
-
 
 if __name__ == '__main__':
     # Call the class
@@ -211,7 +200,6 @@ if __name__ == '__main__':
     ## For ENG 103, we will not be learning about classes, but you are welcome to look into them on your own.
     studio3 = eng103_studio3()
 
-    studio3.studio3_part1()
-
+    studio3.studio3_part2()
 
 
