@@ -139,7 +139,7 @@ if __name__ == '__main__':
 
     ##### EDIT HERE ######
     ## Change the filename to read in the provided csv file
-    base1.read_in_data('[FILENAME GOES HERE]')
+    base1.read_in_data('data/Flower.csv')
 
     # This variable looks at the data and determines how many points there are
     data_length = len(base1.data_x)
@@ -154,7 +154,7 @@ if __name__ == '__main__':
         # This is where we plot the current point on the scatter plot
         ## n denotes the index of the (x,y) point we are currently plotting
         ## The input color=[name of color or variable containing color] changes the color of the point
-        base1.scatter_plot = base1.ax.scatter(base1.data_x[n], base1.data_y[n], **marker_style)
+        base1.scatter_plot = base1.ax.plot(base1.data_x[n], base1.data_y[n], **marker_style)
 
         # The fig.show() function shows the figure in a separate window on your screen
         base1.fig.show()
@@ -175,7 +175,7 @@ if __name__ == '__main__':
 
     ##### EDIT HERE ######
     # Add in the name of your png below
-    plt.savefig('[FILENAME].png')
+    plt.savefig('hfdjkhsd.png')
     ##### STOP EDITING HERE #####
 
     # The fig.show() function shows the figure in a separate window on your screen

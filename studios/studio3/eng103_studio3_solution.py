@@ -1,5 +1,5 @@
 ## AUTHOR: Alexandra Bacula
-## ENG 103 base code 2
+## ENG 103 studio 3 code
 
 import csv
 import numpy as np
@@ -9,7 +9,7 @@ from matplotlib.collections import PatchCollection
 from matplotlib.backend_bases import MouseButton
 
 
-class eng103_base2:
+class eng103_studio3:
 
     # This is the initialization function of the class
     def __init__(self):
@@ -21,6 +21,8 @@ class eng103_base2:
 
         # Initialize the patches list
         self.patches = []
+
+        self.exit_loop = 0
 
     # This function draws a static rectangle
     ## INPUTS: x, y, height, width
@@ -89,7 +91,9 @@ class eng103_base2:
                     print("Tilt? (range 0:180)")
                     tilt = float(input())
                     self.draw_static_ellipse(event.xdata,event.ydata,width,height,tilt)
-
+                elif shape == 'Done' or shape == 'Finished':
+                    flag = 1
+                    self.exit_loop = 1
                 else:
                     print("Not a supported shape!")
                     flag = 1
@@ -102,32 +106,28 @@ class eng103_base2:
                     p.set_facecolor(color)
                     self.ax.add_collection(p)
                     plt.show()
-                    plt.savefig('test_point_click.png')
+                    plt.savefig('test_point_click_studio3.png')
                 print("Click where you want the next shape!")
-
 
 
 if __name__ == '__main__':
     # Call the class
     ## Classes are a way to organize code, variables, and functions.
     ## For ENG 103, we will not be learning about classes, but you are welcome to look into them on your own.
-    base2 = eng103_base2()
+    studio3 = eng103_studio3()
 
-    base2.draw_static_circle(0, 0, 0.01)
-    p = PatchCollection(base2.patches, alpha=0.1)
-    base2.ax.add_collection(p)
+    studio3.draw_static_circle(0, 0, 0.01)
+    p = PatchCollection(studio3.patches, alpha=0.1)
+    studio3.ax.add_collection(p)
 
     # The fig.show() function shows the figure in a separate window on your screen
-    base2.fig.show()
-    plt.title("Alexandra Bacula, Assignment 3 Solution")
-    plt.pause(1)
-
+    studio3.fig.show()
+    plt.title("Alexandra Bacula, Studio 3 Solution")
 
     print("Click where you want the shape!")
-    plt.connect('button_press_event', base2.get_mouse_coords)
+    plt.connect('button_press_event', studio3.get_mouse_coords)
+
+    plt.show(block=True)
 
 
-
-    plt.show()
-    plt.pause(1)
 
