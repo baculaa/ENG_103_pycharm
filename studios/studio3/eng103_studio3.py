@@ -21,7 +21,7 @@ class eng103_studio3:
         # Initialize the patches list
         self.patches = []
 
-
+    ################ SHAPE FUNCTIONS #####################
     # This function draws a static rectangle
     ## INPUTS: x, y, height, width
     ## OUTPUTS: rectangle centered at (x,y) of given dimensions
@@ -46,14 +46,15 @@ class eng103_studio3:
         ellipse = mpatches.Ellipse((x,y),width,height,angle=tilt)
         self.patches.append(ellipse)
 
+    ################ INTERACTIVITY FUNCTION #####################
     # This function is triggered when the mouse is clicked
-    def get_mouse_coords(self,event):
+    def interactive_plot(self,event):
         # Reset patches so every shape isn't redrawn at every click
         self.patches = []
         # If the left mouse button is clicked
         if event.button is MouseButton.LEFT:
             # get the x and y pixel coords of the click
-            x, y = event.x, event.y
+            x, y = event.xdata, event.ydata
             # If the coordinates are in the figure range
             if event.inaxes:
                 ax = event.inaxes  # the axes instance
@@ -74,7 +75,7 @@ class eng103_studio3:
                     print("Height?")
                     # Save input as a float
                     height = float(input())
-                    self.draw_static_rectangle(event.xdata-(width/2), event.ydata-(height/2), height, width)
+                    self.draw_static_rectangle(x-(width/2), y-(height/2), height, width)
 
                 elif shape == 'ellipse':
                     print("Width?")
@@ -83,7 +84,7 @@ class eng103_studio3:
                     height = float(input())
                     print("Tilt? (range 0:180)")
                     tilt = float(input())
-                    self.draw_static_ellipse(event.xdata,event.ydata,height,width,tilt)
+                    self.draw_static_ellipse(x,y,height,width,tilt)
 
                 ##### EDIT HERE ######
 
@@ -92,7 +93,7 @@ class eng103_studio3:
                 ## This will consist of one print statement, and saving the input as a float type variable called radius
 
                 # Then, call the draw_static_circle() function
-                ## Use the examples from the rectangle and ellipse function calls in lines 77 and 86
+                ## Use the examples from the rectangle and ellipse function calls in lines 78 and 87
                 ## The circle function will take in the x and y position like the rectangle and ellipse, and will also take in the radius
 
                 ##### STOP EDITING HERE #####
@@ -121,6 +122,7 @@ class eng103_studio3:
 
                 print("Click where you want the next shape!")
 
+    ########## STUDIO 3 PART 1 #############
     def studio3_part1(self):
         # EXAMPLE CIRCLE #
         ## Plot the circle at (0,0) with radius of 1
@@ -154,7 +156,7 @@ class eng103_studio3:
         ## Replace 'lavender' in the example with your color in the following function:
         ### COPY AND FILL IN COLOR: p.set_facecolor('lavender')
 
-        ## Finally, copy the following two functions, but don't change anything about the
+        ## Finally, copy the following two functions, but don't change anything about them
         ## The first function is adding the shape you just specified to the list of shapes to plot
         ## The second is clearing your patches so that you don't overwrite your color and opacity choices
         ### COPY AND DO NOT CHANGE: self.ax.add_collection(p)
@@ -164,21 +166,23 @@ class eng103_studio3:
         ## Each shape requires all five lines of code in the order specified above
 
 
-        # Change this to your name
+        # Change this to your name and your PNG name
         plt.title("Alexandra Bacula, Studio 3 Part 1")
+        plt.savefig('bacula_studio3_part1.png')
         ##### STOP EDITING HERE #####
 
         plt.show()
 
-
+    ########## STUDIO 3 PART 2 #############
     def studio3_part2(self):
         self.draw_static_circle(0, 0, 0.01)
         p = PatchCollection(self.patches, alpha=0.1)
         self.ax.add_collection(p)
 
+        # Turn on interactive mode
+        plt.ion()
 
         # The fig.show() function shows the figure in a separate window on your screen
-        plt.ion()
         self.fig.show()
 
         ##### EDIT HERE #####
@@ -186,11 +190,15 @@ class eng103_studio3:
         plt.title("Alexandra Bacula, Studio 3 Part 2")
         ##### STOP EDITING HERE #####
 
+        # Pause so the plot doesn't close
         plt.pause(1)
 
+        # Prompt the user to click on the plot where they want the shape
         print("Click where you want the shape!")
-        plt.connect('button_press_event', self.get_mouse_coords)
+        # On mouse click, run the interactive_plot function
+        plt.connect('button_press_event', self.interactive_plot)
 
+        # Show the plot
         plt.show(block = True)
         plt.pause(1)
 
@@ -200,6 +208,8 @@ if __name__ == '__main__':
     ## For ENG 103, we will not be learning about classes, but you are welcome to look into them on your own.
     studio3 = eng103_studio3()
 
-    studio3.studio3_part2()
+    #### EDIT HERE ####
+    # Change between studio3.studio3_part1() and stuido3.studio3_part2()
+    studio3.studio3_part1()
 
 
