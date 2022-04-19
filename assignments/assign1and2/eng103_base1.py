@@ -121,6 +121,40 @@ class eng103_base1:
 
         ##### EDIT HERE #####
         ###### WRITE YOUR IF/ELSE STATEMENT HERE ######
+        # This variable sets the fill color of the marker
+        marker_fill_color = 'black'
+
+        # This variable sets the edge color of the marker
+        marker_edge_color = 'black'
+
+        # This variable sets the marker size
+        marker_size = 10
+
+        # This variable sets the marker style
+        ## see here for the possible marker types: https://matplotlib.org/3.5.1/gallery/lines_bars_and_markers/marker_reference.html
+        marker_type = 'o'
+
+        # If you want your marker to be half one color and half another, choose a second color
+        marker_fill_color2 = 'lightsteelblue'
+
+        # And choose how you want to split your marker colors
+        ## options: 'full' , 'left' , 'right' , 'bottom' , 'top' , 'none'
+        marker_fill_style = 'full'
+
+        distance = np.sqrt((current_y-base_y)**2 + (current_x-base_x)**2)
+
+        if distance < 0.5:
+            marker_fill_color = 'purple'
+            marker_type = 'v'
+        elif distance < 1:
+            marker_fill_color = 'blue'
+            marker_type = 'o'
+        elif distance < 1.5:
+            marker_fill_color = 'orange'
+            marker_type = '>'
+        else:
+            marker_fill_color = 'green'
+            marker_type = '.'
 
         ### DO NOT EDIT BELOW THIS LINE!! ###
         marker_style = dict(marker=marker_type, markerfacecolor=marker_fill_color, markerfacecoloralt=marker_fill_color2,
@@ -149,7 +183,7 @@ if __name__ == '__main__':
 
         # The set_colors_assignment_[X]() function is a custom function that sets the color/style/size for a point in the data with a given index n
         ## This function is defined in the code above and the color will be edited there
-        marker_style = base1.set_colors_assignment_1(n)
+        marker_style = base1.set_colors_assignment_2(n)
 
         # This is where we plot the current point on the scatter plot
         ## n denotes the index of the (x,y) point we are currently plotting

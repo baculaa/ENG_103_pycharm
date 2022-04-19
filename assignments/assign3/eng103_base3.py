@@ -7,7 +7,8 @@ import PIL
 
 def Import_Image(FileName):
 	My_Image = PIL.Image.open(FileName)
-	return My_Image#.resize((256,256))	
+	return My_Image#.resize((256,256))
+
 def Modify_Image_Array(Image):
 	Image_Array = np.array(My_Image)
 	XDim, YDim, NumChannels = Image_Array.shape
@@ -16,29 +17,30 @@ def Modify_Image_Array(Image):
 	Modified = PIL.Image.fromarray(Image_Array)
 	Modified = PIL.ImageOps.equalize(Modified)
 	return Modified
+
 def Rotate_And_Paste(Canvas, Input, Angle, Location):
 	Rotated = 	Input.rotate(Angle, expand=0, fillcolor = (0,0,0,0))
 	Canvas.paste(Rotated,(int(Location[0]), int(Location[1])),Rotated)
 	return Canvas
 
+
+# Canvas.paste(Input.rotate(90*0), (int(XDim/2),0))
+# Canvas.paste(Input.rotate(90*1), (0,int(YDim/2)))
+# Canvas.paste(Input.rotate(90*2), (int(XDim/2),int(YDim)))
+# Canvas.paste(Input.rotate(90*3), (int(XDim),int(YDim/2)))
+
+# Center = PIL.ImageOps.fit(Input, (XDim*2, YDim*2))
+# Blended = PIL.Image.blend(Canvas, Center,0.0)
+# Canvas.paste(Blended.rotate(0), (0,0))
 def Composite_Image(Input):
 	print(Input.size)
 	XDim, YDim = Input.size
-	Canvas = PIL.Image.new(mode='RGB', size = [XDim*2, YDim*2])
+	Canvas = PIL.Image.new(mode='RGB', size = [XDim, YDim*4])
 	
-	Canvas.paste(Input.rotate(45*1), (0,0))
-	Canvas.paste(Input.rotate(45*-1), (XDim,0))
-	Canvas.paste(Input.rotate(45*3), (0,YDim))
-	Canvas.paste(Input.rotate(45*-3), (XDim,YDim))
-	
-	Canvas.paste(Input.rotate(90*0), (int(XDim/2),0))
-	Canvas.paste(Input.rotate(90*1), (0,int(YDim/2)))
-	Canvas.paste(Input.rotate(90*2), (int(XDim/2),int(YDim)))
-	Canvas.paste(Input.rotate(90*3), (int(XDim),int(YDim/2)))	
-	
-	Center = PIL.ImageOps.fit(Input, (XDim*2, YDim*2))
-	Blended = PIL.Image.blend(Canvas, Center,0.0)
-	Canvas.paste(Blended.rotate(0), (0,0))
+	Canvas.paste(Input.rotate(0), (0,0))
+	Canvas.paste(PIL.ImageOps.flip(Input.rotate(0)), (0,YDim))
+	Canvas.paste(Input.rotate(0), (0,YDim*2))
+	Canvas.paste(PIL.ImageOps.flip(Input.rotate(0)), (0,YDim*3))
 
 	plt.imshow(Canvas)
 	plt.show()
@@ -62,6 +64,7 @@ def Composite_Image2(Input):
 	plt.imshow(Canvas)
 	plt.show()
 	return(Canvas)
+
 def Example_Transforms(My_Input_Image):
 
 	Rotated = My_Input_Image.rotate(45)
@@ -94,18 +97,18 @@ def Example_Transforms(My_Input_Image):
 	
 if __name__ == '__main__':
 	
-	FileName = 'Image5.jpg'
+	FileName = 'bean.jpg'
 	
 	My_Image = Import_Image(FileName)
 	plt.imshow(My_Image)
 	plt.show()
 	
-	My_Image.save('Saved_Output.jpg')
+	# My_Image.save('Saved_Output.jpg')
 	
-	Example_Transforms(My_Image)
+	# Example_Transforms(My_Image)
 	
 	Modified = Modify_Image_Array(My_Image)
-	Reflected = Composite_Image2(Modified)
+	Reflected = Composite_Image(Modified)
 	#Composite_Image2(Reflected)
 	
 	

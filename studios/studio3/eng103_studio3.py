@@ -87,7 +87,7 @@ class eng103_studio3:
                     self.draw_static_ellipse(x,y,height,width,tilt)
 
                 ##### EDIT HERE ######
-
+                
                 # Write an additional elif statement for drawing a circle when the input is 'circle'
                 # Using the examples above from rectangle and ellipse, ask the user for the radius of the circle
                 ## This will consist of one print statement, and saving the input as a float type variable called radius
@@ -210,6 +210,6 @@ if __name__ == '__main__':
 
     #### EDIT HERE ####
     # Change between studio3.studio3_part1() and stuido3.studio3_part2()
-    studio3.studio3_part1()
+    studio3.studio3_part2()
 
 
