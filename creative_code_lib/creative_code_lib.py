@@ -11,6 +11,9 @@ from matplotlib.backend_bases import MouseButton
 from matplotlib import animation as anim
 import time as timepack
 import sounddevice as sd
+import random
+import turtle
+import time
 
 
 class interactive_plotting:
@@ -243,7 +246,6 @@ class interactive_plotting:
         Lower_Right = (Center_X + Span_X / 2, Center_Y - Span_Y / 2)
         Corners = [Upper_Left, Upper_Right, Lower_Right, Lower_Left, Upper_Left]
         return np.array(Corners)
-
 
 class data_reading:
 
@@ -759,8 +761,178 @@ class sound_helpers:
 
         return Notes, Timing
 
+class Tree_Helpers:
+    def __init__(self):
+        self.Establish_Plot()
+
+    def Establish_Plot(self):
+        Figure, Axes = plt.subplots()
+        Axes.set_facecolor([0, 0, 0])
+        Axes.set_aspect('equal')
+        plt.show(block=False)
+
+    def Example(self):
+        My_Tree = Tree()
+        My_Trunk = Tree_Branch(BaseNode=Tree_Node(0, 0), Length=3, Heading=np.pi / 2)
+        Branches = [My_Trunk]
+        for n in range(5):
+            Branches = My_Tree.Split_Group(Branches)
+
+        Other_Trunk = Tree_Branch(BaseNode=Tree_Node(0, 0), Length=3, Heading=-np.pi / 2)
+        Branches = [Other_Trunk]
+        for n in range(5):
+            Branches = My_Tree.Split_Group(Branches)
+
+class Tree_Node:
+    def __init__(self, X=0, Y=0):
+        # DESCRIPTION: This function is called every time a node is instantiated.
+        # A node just has an X and Y coordinate -- this is a simple class
+        self.X = X
+        self.Y = Y
+
+class Tree_Branch:
+    def __init__(self, Base_Input, Length_Input, Heading_Input):
+        ## DESCRIPTION:
+        ## This function runs every time a new Tree_Branch is instantiated.
+        ## It assigns the properties Base, Length, and Heading.
+        ## It should also call functions Grow_Tip_From_Base() and Draw()
+
+
+        self.Base = Base_Input
+        self.Length = Length_Input
+        self.Heading = Heading_Input
+        self.Tip = self.Grow_Tip_From_Base()
+        self.Draw()
+
+        ## FINISH EDITING ##
+
+        return
+
+    def Grow_Tip_From_Base(self):
+        ## DESCRIPTION: Find/Return tip of branch, given its base, length, and heading.
+
+        Tip = Tree_Node()
+        Tip.X = self.Base.X + self.Length * np.cos(self.Heading)
+        Tip.Y = self.Base.Y + self.Length * np.sin(self.Heading)
+        return Tip
+
+    def Draw(self):
+        # DESCRIPTION: Draws branch onto existing plot
+
+        plt.plot([self.Base.X, self.Tip.X], [self.Base.Y, self.Tip.Y], color=[0.4, 1, 0.4])
+        plt.draw()
+
+class Tree:
+    def __init__(self):
+        # DESCRIPTION:
+        # This function is called when a Tree is instantiated.
+        # It establishes some settings, but they can always be changed later.
+
+
+        self.Branch_Angle = 60 * np.pi / 180
+        self.Branches_Per_Split = 2
+        self.Branch_Length = 1
+
+    def Split_Branch(self, Parent_Branch):
+        # DESCRIPTION:
+        # Takes input of a Parent_Branch, and splits it into newly created Child Branches.
+        # The base of each Child is marked as the tip of the Parent;
+        # Each child's heading is calculated
+        # And a new branch is created with the given Base, Length, Heading.
+
+
+        Children = []
+        for Branch_Counter in range(self.Branches_Per_Split):
+            New_Heading = Parent_Branch.Heading + self.Branch_Angle * (
+                        Branch_Counter - (self.Branches_Per_Split - 1) / 2)
+            New_Branch = Tree_Branch(Base_Input=Parent_Branch.Tip, Length_Input=self.Branch_Length,
+                                     Heading_Input=New_Heading)
+            Children.append(New_Branch)
+        return Children
+
+    def Split_Group(self, Parents):
+        # DESCRIPTION:
+        # Takes input of a list of Parents, and splits each into newly created Child Branches.
+
+        Group_Children = []
+        for Parent_Branch in Parents:
+            Children = self.Split_Branch(Parent_Branch)
+            Group_Children.extend(Children)
+        return Group_Children
+
+class Turtle:
+    def __init__(self):
+        turtle.Turtle()
+        ### If you want to change the speed the turtle moves at, do so here ###
+        turtle.speed(speed='fast')
+
+    #### EXAMPLE 1 FUNCTION ####
+    def example_overlapping_stars(n, x, angle):
+        # SOURCE: https://www.geeksforgeeks.org/draw-colourful-star-pattern-in-turtle-python
+
+        # loop for number of stars
+        for i in range(n):
+
+            # Set it so that colors are set as RGB values
+            turtle.colormode(255)
+
+            # choosing random integers
+            # between 0 and 255
+            # to generate random rgb values
+            a = random.randint(0, 255)
+            b = random.randint(0, 255)
+            c = random.randint(0, 255)
+
+            # setting the outline in RGB
+            # and fill colour in RGB
+            turtle.pencolor(a, b, c)
+            turtle.fillcolor(a, b, c)
+
+            # begins filling the star
+            turtle.begin_fill()
+
+            # loop for drawing each star
+            for j in range(5):
+                turtle.forward(5 * n - 5 * i)
+                turtle.right(x)
+                turtle.forward(5 * n - 5 * i)
+                turtle.right(72 - x)
+
+            # colour filling complete
+            turtle.end_fill()
+
+            # rotating for
+            # the next star
+            turtle.rt(angle)
+
+    #### EXAMPLE 2 FUNCTION ####
+    def example_rainbow_spiral(n):
+        ### SOURCE: https://www.geeksforgeeks.org/turtle-programming-python
+
+        # list of six colors for the line color
+        # colors = ['red', 'purple', 'blue', 'green', 'orange', 'yellow']
+        colors = cm.get_cmap(cm.viridis, 6)
+        print(colors(0))
+
+        # Call the turtle pen
+        t = turtle.Pen()
+
+        # set the background color
+        turtle.bgcolor('black')
+
+        for x in range(n):
+            # Change the pen color
+            t.pencolor((np.clip(colors(x), 2, 10) - 2) / 8.)
+
+            # Change the pen line width based on n
+            t.width(x // 100 + 1)
+
+            # Move forward x amount
+            t.forward(x)
+
+            # Rotate 59 deg left
+            t.left(59)
+
 if __name__ == '__main__':
-  a = interactive_plotting()
-  a.init_figure()
-  a.click_and_user_specify_shape()
+  pass
 
