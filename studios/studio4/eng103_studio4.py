@@ -52,7 +52,7 @@ class Helpers:
 		
 		## SETTINGS FOR SOUND GENERATION
 		Base_Freq = 440/4 # This frequency corresponds to our "Root" note -- 440 Hz is middle A.
-		Sound_Block_Size = 2000 # How many sound samples are processed at a time. there are 44100 in a second.
+		Sound_Block_Size = 4000 # How many sound samples are processed at a time. there are 44100 in a second.
 		return	
 	
 	def Establish_Sound(self):
@@ -74,7 +74,7 @@ class Helpers:
 		
 		## DEFINE PARAMETERS FOR LATER USE -- NO NEED TO EDIT
 		Sound_Start_Index = 0
-		Sound_Sample_Rate = 44100
+		Sound_Sample_Rate = 4400
 		StrikeTime=0
 		Sound_Save = []
 		
@@ -270,19 +270,19 @@ if __name__ == '__main__':
 
 
 
-	## EXAMPLE SONG -- EDIT THIS OR START FROM SCRATCH
-	##________________________________________________
-	#NoteHold_Time = 1
-	Jeeves.Play_Note(Note=0, Duration = 0.3)
-	Jeeves.Transition_Between_Notes(Note1=0, Note2 = 4, Transition_Time=0.5) # This function only affects the graph
-	
-	Jeeves.Play_Note(Note=4, Duration = 0.3)
-	Jeeves.Transition_Between_Notes(Note1=4, Note2 = 7, Transition_Time=0.5) # This function only affects the graph	
-	
-	Jeeves.Play_Note(Note=7, Duration = 0.3)
-	Jeeves.Play_Note(Note=4, Duration = 0.3)
-	Jeeves.Play_Note(Note=0, Duration = 0.3)	
-	##________________________________________________
+	# ## EXAMPLE SONG -- EDIT THIS OR START FROM SCRATCH
+	# ##________________________________________________
+	# #NoteHold_Time = 1
+	# Jeeves.Play_Note(Note=0, Duration = 0.3)
+	# Jeeves.Transition_Between_Notes(Note1=0, Note2 = 4, Transition_Time=0.5) # This function only affects the graph
+	#
+	# Jeeves.Play_Note(Note=4, Duration = 0.3)
+	# Jeeves.Transition_Between_Notes(Note1=4, Note2 = 7, Transition_Time=0.5) # This function only affects the graph
+	#
+	# Jeeves.Play_Note(Note=7, Duration = 0.3)
+	# Jeeves.Play_Note(Note=4, Duration = 0.3)
+	# Jeeves.Play_Note(Note=0, Duration = 0.3)
+	# ##________________________________________________
 	
 	
 	
@@ -297,7 +297,39 @@ if __name__ == '__main__':
 	## PART 3 ##
 	## Write your loops here to create music. 
 	##________________________________________________
-	
+	Beat = 0.3
+	while 1:
+		for i in range(3):
+			NoteHold_Time = 0.1
+			Jeeves.Play_Note(Note=0, Duration=Beat * 2 / 3)
+			Jeeves.Play_Note(Note=12, Duration=Beat / 3)
+			Jeeves.Play_Note(Note=24, Duration=Beat * 2 / 3)
+			Jeeves.Play_Note(Note=36, Duration=Beat / 3)
+
+			NoteHold_Time = 0.5
+			Jeeves.Play_Note(Note=0, Duration=Beat * 2 / 3)
+			Jeeves.Play_Note(Note=12, Duration=Beat / 3)
+			Jeeves.Play_Note(Note=24, Duration=Beat * 2 / 3)
+			Jeeves.Play_Note(Note=36, Duration=Beat / 3)
+
+			NoteHold_Time = 0.1
+			Jeeves.Play_Note(Note=0, Duration=Beat * 2 / 3)
+			Jeeves.Play_Note(Note=12, Duration=Beat / 3)
+			Jeeves.Play_Note(Note=24, Duration=Beat * 2 / 3)
+			Jeeves.Play_Note(Note=36, Duration=Beat / 3)
+
+			NoteHold_Time = 0.4
+			Jeeves.Play_Note(Note=0, Duration=Beat * 2)
+
+		NoteHold_Time = 0.3
+		Jeeves.Play_Note(Note=7 + 12, Duration=Beat)
+		Jeeves.Play_Note(Note=7 + 12, Duration=Beat)
+		Jeeves.Play_Note(Note=5 + 12, Duration=Beat)
+		Jeeves.Play_Note(Note=5 + 12, Duration=Beat)
+		Jeeves.Play_Note(Note=3 + 12, Duration=Beat)
+		Jeeves.Play_Note(Note=3 + 12, Duration=Beat)
+		Jeeves.Play_Note(Note=2 + 12, Duration=Beat)
+		Jeeves.Play_Note(Note=2 + 12, Duration=Beat)
 	
 	
 

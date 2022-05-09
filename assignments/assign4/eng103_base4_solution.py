@@ -162,7 +162,7 @@ class image_manipulation:
 
                 avg_value_c = np.reshape(color_values[orig_x_index:orig_x_index + avg_factor,
                                        orig_y_index:orig_y_index + avg_factor,0:3], -1)
-
+                print(avg_value_c)
                 color_avg[x,y] = np.average(avg_value_c)
 
         return gray_avg,color_avg
@@ -188,29 +188,34 @@ if __name__ == '__main__':
     image_manip = image_manipulation()
 
     Blank = image_manip.Import_Image('Blank.jpg')
-    My_Image = image_manip.Import_Image('houses.jpg')
+    My_Image = image_manip.Import_Image('borbor.jpg')
 
-    NumWaves = 100
+    # NumWaves = 100
+    #
+    # Mean_Color, Mean_GreyScale, Phase_Advance = sound_and_sine.Picture_To_RowInfo(My_Image)
+    # X_Coords, Y_Coords = sound_and_sine.RowInfo_To_Waves(My_Image, Mean_GreyScale, Phase_Advance)
+    # plt.imshow(Blank)
+    # sound_and_sine.Plot_Waves(X_Coords, Y_Coords, Mean_Color, Mean_GreyScale, Phase_Advance)
+    # plt.show(block=True)
+    #
+    # Stream, Sound_Start_Index, Sound_Sample_Rate, Phase_Adjust, EndPhase = sound_and_sine.Open_Stream()
+    # PauseTime = 0.15
+    #
+    # Notes, Timing = image_manip.Notes_Timing_from_Image(My_Image, 128 * 4)
 
-    Mean_Color, Mean_GreyScale, Phase_Advance = sound_and_sine.Picture_To_RowInfo(My_Image)
-    X_Coords, Y_Coords = sound_and_sine.RowInfo_To_Waves(My_Image, Mean_GreyScale, Phase_Advance)
-    plt.imshow(Blank)
-    sound_and_sine.Plot_Waves(X_Coords, Y_Coords, Mean_Color, Mean_GreyScale, Phase_Advance)
-    plt.show(block=True)
-
-    Stream, Sound_Start_Index, Sound_Sample_Rate, Phase_Adjust, EndPhase = sound_and_sine.Open_Stream()
-    PauseTime = 0.15
-
-    Notes, Timing = image_manip.Notes_Timing_from_Image(My_Image, 128 * 4)
-
-    n = 0
-    while n < len(Notes):
-        Picture_Freq = Notes[n]
-        time.sleep(Timing[n])
-        n+=1
-
-    plt.pause(PauseTime * 2)
-    Stream.stop()
+    # n = 0
+    # while n < len(Notes):
+    #     Picture_Freq = Notes[n]
+    #     time.sleep(Timing[n])
+    #     n+=1
+    #
+    # plt.pause(PauseTime * 2)
+    # Stream.stop()
 
     ## SAVE FILE
-    wavio.write("houses.wav", np.array(Sound_Save), Sound_Sample_Rate, sampwidth=2)
+    # wavio.write("houses.wav", np.array(Sound_Save), Sound_Sample_Rate, sampwidth=2)
+    gray,rgb = image_manip.Compress_Image(My_Image,128)
+    plt.imshow(PIL.Image.fromarray(gray))
+    plt.waitforbuttonpress()
+    plt.imshow(PIL.Image.fromarray(rgb))
+    plt.waitforbuttonpress()
