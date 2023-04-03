@@ -143,7 +143,7 @@ if __name__ == '__main__':
 
     ##### EDIT HERE ######
     # Change the filename to read in the provided csv file
-    base1.read_in_data('data/Shell.csv')
+    base1.read_in_data('eng103_data1.csv')
     ##### STOP EDITING HERE #####
 
 
