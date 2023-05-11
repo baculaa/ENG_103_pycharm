@@ -175,7 +175,7 @@ class image_manipulation:
         Timing = np.ones((len(Notes))) * 0.1
 
         for n in range(len(Raw_values)):
-            Notes[n] = round(Raw_values[n] / 10)  # /21.25)
+            Notes[n] = (Raw_values[n] / 10)  # /21.25)
             Timing[n] = Raw_color[n] / 255
         print(Timing)
         print(Notes)
@@ -190,27 +190,27 @@ if __name__ == '__main__':
     Blank = image_manip.Import_Image('Blank.jpg')
     My_Image = image_manip.Import_Image('borbor.jpg')
 
-    # NumWaves = 100
-    #
-    # Mean_Color, Mean_GreyScale, Phase_Advance = sound_and_sine.Picture_To_RowInfo(My_Image)
-    # X_Coords, Y_Coords = sound_and_sine.RowInfo_To_Waves(My_Image, Mean_GreyScale, Phase_Advance)
-    # plt.imshow(Blank)
-    # sound_and_sine.Plot_Waves(X_Coords, Y_Coords, Mean_Color, Mean_GreyScale, Phase_Advance)
-    # plt.show(block=True)
-    #
-    # Stream, Sound_Start_Index, Sound_Sample_Rate, Phase_Adjust, EndPhase = sound_and_sine.Open_Stream()
-    # PauseTime = 0.15
-    #
-    # Notes, Timing = image_manip.Notes_Timing_from_Image(My_Image, 128 * 4)
+    NumWaves = 100
 
-    # n = 0
-    # while n < len(Notes):
-    #     Picture_Freq = Notes[n]
-    #     time.sleep(Timing[n])
-    #     n+=1
-    #
-    # plt.pause(PauseTime * 2)
-    # Stream.stop()
+    Mean_Color, Mean_GreyScale, Phase_Advance = sound_and_sine.Picture_To_RowInfo(My_Image)
+    X_Coords, Y_Coords = sound_and_sine.RowInfo_To_Waves(My_Image, Mean_GreyScale, Phase_Advance)
+    plt.imshow(Blank)
+    sound_and_sine.Plot_Waves(X_Coords, Y_Coords, Mean_Color, Mean_GreyScale, Phase_Advance)
+    plt.show(block=True)
+
+    Stream, Sound_Start_Index, Sound_Sample_Rate, Phase_Adjust, EndPhase = sound_and_sine.Open_Stream()
+    PauseTime = 0.15
+
+    Notes, Timing = image_manip.Notes_Timing_from_Image(My_Image, 128 * 4)
+
+    n = 0
+    while n < len(Notes):
+        Picture_Freq = Notes[n]
+        time.sleep(Timing[n])
+        n+=1
+
+    plt.pause(PauseTime * 2)
+    Stream.stop()
 
     ## SAVE FILE
     # wavio.write("houses.wav", np.array(Sound_Save), Sound_Sample_Rate, sampwidth=2)

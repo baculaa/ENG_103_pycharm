@@ -90,7 +90,21 @@ class eng103_base1:
         ## The current point as a numpy array
         ## The current x value as a float
         ## The current y value as a float
+        # This variable sets the fill color of the marker
+        marker_fill_color = 'black'
+        marker_fill_color2 = 'black'
 
+        # This variable sets the edge color of the marker
+        marker_edge_color = 'black'
+
+        # This variable sets the marker size
+        marker_size = 10
+
+        fill_style = 'top'
+
+        # This variable sets the marker style
+        ## see here for the possible marker types: https://matplotlib.org/3.5.1/gallery/lines_bars_and_markers/marker_reference.html
+        marker_type = 'o'
         # This is an example of how to create a point using numpy. This point is (0,0).
         ## To change this point, just change the numbers.
         ## To create an additional point for comparison:
@@ -116,6 +130,7 @@ class eng103_base1:
         current_y = self.data_y[n]
 
         dist = np.linalg.norm(base_point-current_point)
+
 
         if dist < 0.65:
             marker_fill_color = 'steelblue'
@@ -154,7 +169,7 @@ if __name__ == '__main__':
     for n in range(data_length):
         # The set_colors() function is a custom function that sets the color for a point in the data with a given index n
         ## This function is defined in the code above and the color will be edited there
-        marker_style = base1.set_colors_assignment_1(n)
+        marker_style = base1.set_colors_assignment_2(n)
 
         # This is where we plot the current point on the scatter plot
         ## n denotes the index of the (x,y) point we are currently plotting

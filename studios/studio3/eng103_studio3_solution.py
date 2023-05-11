@@ -211,7 +211,7 @@ if __name__ == '__main__':
     ## For ENG 103, we will not be learning about classes, but you are welcome to look into them on your own.
     studio3 = eng103_studio3()
 
-    studio3.studio3_part1()
+    studio3.studio3_part2()
 
 
 

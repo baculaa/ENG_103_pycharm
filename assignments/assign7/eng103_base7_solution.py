@@ -176,8 +176,8 @@ if __name__ == '__main__':
     image_manip = image_manipulation()
 
     # Import your image (make sure it is in your current directory, or specify the path)
-    My_Image = image_manip.Import_Image('runt.jpg')
-    My_Image2 = image_manip.Import_Image('marble.jpg')
+    My_Image = image_manip.Import_Image('borbor.jpg')
+    My_Image2 = image_manip.Import_Image('winter_skyline.jpg')
 
     # Once you have edited the Flip_Image function, uncomment below
     # Call the Flip image

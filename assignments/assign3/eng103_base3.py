@@ -97,7 +97,7 @@ def Example_Transforms(My_Input_Image):
 	
 if __name__ == '__main__':
 	
-	FileName = 'bean.jpg'
+	FileName = 'borbor.jpg'
 	
 	My_Image = Import_Image(FileName)
 	plt.imshow(My_Image)
